@@ -28,5 +28,5 @@ exec LANGCHAIN_API_KEY=your-langchain-api-key
 ## Run
 
 ```shell
-python -m app
+poetry run python -m app 'Who is Nelson Mandela?'
 ```
