@@ -1,10 +1,14 @@
-import sys
+import argparse
 from app import chat
 
-if (len(sys.argv) < 2):
-    print("Usage: python -m app <prompt>")
-    print("Example: python -m app 'What is your name?'")
-    sys.exit(1)
+args = argparse.ArgumentParser(
+    prog="raggatta", description="Ask Claude a question with your data"
+)
+args.add_argument("-p", "--prompt", help="Prompt to ask Claude", required=True)
+args.add_argument("-r", "--rag-data", help="RAG data to supplement the prompt")
 
-response = chat.ask_claude(sys.argv[1])
+params = args.parse_args()
+print(params.prompt)
+
+response = chat.ask_claude(params.prompt, "Johnny is on the Monorail. In a Song.")
 print(f"Response: {response}")
